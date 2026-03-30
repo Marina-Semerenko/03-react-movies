@@ -1,30 +1,21 @@
-import { useState } from "react";
 import styles from './SearchBar.module.css'
 import toast from "react-hot-toast";
 
-export default function SearchBar ({ onSubmit }) {
-  const [movies, setMovies] = useState([]);
+interface SearchBarProps {
+    onSubmit: (query: string) => void;
+}
 
-  async function handleSearch(formData) {
-    const query = formData.get("query").trim();
+export default function SearchBar ({ onSubmit }: SearchBarProps) {
+  const handleSubmit = (formData: FormData) => {
+    const query = formData.get("query") as string;
  
-    if (!query) {
+    if (!query.trim()) {
       toast.error('Please enter your search query');
       return;
     }
-
-    try {
-      const data = await onSubmit(query);
-      if (data.length === 0) {
-        toast('No movies found  for your request.')
-      }
-      setMovies(data);
-    } catch (error) {
-      toast.error('Error')
-    }
-  }
-
-  return (
+    onSubmit(query);
+  };
+   return (
 <header className={styles.header}>
   <div className={styles.container}>
     <a
@@ -35,7 +26,7 @@ export default function SearchBar ({ onSubmit }) {
     >
       Powered by TMDB
     </a>
-    <form className={styles.form}>
+         <form action={handleSubmit} className={styles.form}>
       <input
         className={styles.input}
         type="text"

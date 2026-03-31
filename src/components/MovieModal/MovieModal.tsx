@@ -4,19 +4,21 @@ import { useEffect } from "react";
 import type { Movie } from "../types/movie";
 import css from "./MovieModal.module.css";
 
+
 interface MovieModalProps {
     movie: Movie;
-    onClose: () => void;
-}
+  onClose: () => void;
+ }
 const modalRoot = document.getElementById("modal-root")!;
 
 export default function MovieModal ({ movie, onClose }: MovieModalProps) {
    
   useEffect(() => {    
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.code === 'Escape') 
+      if (e.key === 'Escape') {
         onClose();
-          };
+      };
+    };
     document.addEventListener('keydown', handleKeyDown);
     document.body.style.overflow = 'hidden';
     return () => {
@@ -42,10 +44,9 @@ export default function MovieModal ({ movie, onClose }: MovieModalProps) {
   <div className={css.modal}> 
 
     <button
-     className={css.closeButton}
-      aria-label="Close modal"
-       onClick = { onClose }
-    >
+     className={css.closeButton}      
+     onClick = { onClose } 
+    aria-label="Close modal"> 
   &times;
     </button >
     
@@ -62,8 +63,8 @@ export default function MovieModal ({ movie, onClose }: MovieModalProps) {
         </p>
       <p>
          <strong>Rating:</strong>{movie.vote_average}/10 
-         </p>
-    </div>
+          </p>
+            </div>
      </div>    
     </div >, modalRoot
   

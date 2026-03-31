@@ -6,7 +6,7 @@ import Loader from '../Loader/Loader';
 import { Toaster } from 'react-hot-toast';
 import toast from 'react-hot-toast';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
-import { searchMovies } from '../services/movieService';
+import { searchMovies } from '../../../services/movieService';
 import MovieModal from '../MovieModal/MovieModal';
 
 export default function App() {   

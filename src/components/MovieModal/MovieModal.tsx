@@ -22,7 +22,7 @@ export default function MovieModal ({ movie, onClose }: MovieModalProps) {
     document.addEventListener('keydown', handleKeyDown);
     document.body.style.overflow = 'hidden';
     return () => {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = "";
       document.removeEventListener('keydown', handleKeyDown);
     };
 
@@ -45,15 +45,15 @@ export default function MovieModal ({ movie, onClose }: MovieModalProps) {
 
     <button
      className={css.closeButton}      
-     onClick = { onClose } 
+     onClick = {onClose} 
     aria-label="Close modal"> 
   &times;
     </button >
     
       <img 
       src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
-  alt = { movie.title }
-  className = { css.image }
+  alt = {movie.title}
+  className = {css.image}
        />
     <div className={css.content}>
       <h2>{movie.title}</h2>

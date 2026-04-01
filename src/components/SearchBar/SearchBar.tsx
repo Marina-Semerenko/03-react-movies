@@ -14,7 +14,7 @@ export default function SearchBar ({ onSubmit }: SearchBarProps) {
       return;
     }
     onSubmit(query);
-  };
+  }
    return (
 <header className={styles.header}>
   <div className={styles.container}>

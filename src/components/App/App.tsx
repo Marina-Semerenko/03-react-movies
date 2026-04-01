@@ -6,7 +6,7 @@ import Loader from '../Loader/Loader';
 import { Toaster } from 'react-hot-toast';
 import toast from 'react-hot-toast';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
-import { searchMovies } from '../../../services/movieService';
+import { searchMovies } from '../../services/movieService';
 import MovieModal from '../MovieModal/MovieModal';
 
 export default function App() {   
@@ -28,7 +28,8 @@ export default function App() {
                return;
             }
             setMovies(data);
-         }  catch {
+      } catch {
+          toast.error("Something went wrong!");
             setError(true);
          }  finally {
             setIsLoading(false);

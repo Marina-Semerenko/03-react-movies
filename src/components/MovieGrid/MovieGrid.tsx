@@ -3,7 +3,7 @@ import css from './MovieGrid.module.css';
 
 interface MovieGridProps { 
   onSelect: (movie: Movie) => void;
-  movies: Movie[]
+  movies: Movie[];
 }
 
 
@@ -20,7 +20,7 @@ export default function MovieGrid({movies, onSelect }: MovieGridProps) {
             <img
               className={css.image}
               src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-              alt={movie.title}
+              alt={`${movie.title}`}
               loading="lazy"
             />
             <h2 className={css.title}>{movie.title}</h2>
